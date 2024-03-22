@@ -2,9 +2,6 @@ import MyparseTorrent from "../lib/TorrentReader";
 import { formatFileSize } from "./generic.utility";
 const __path_separator__ = `/`;
 
-
-
-
 const getFileExtension = (fileName) => {
     if (typeof fileName != "string") {
         return undefined;
@@ -27,7 +24,6 @@ export const fileTypeFilter = (fileList = []) => {
     let ext;
     const result = {};
     result.total = fileList.length;
-    result.files = fileList;
     result.types = {};
 
     fileList.forEach((v) => {
@@ -78,9 +74,9 @@ export const generateFolderTree = function (data) {
 
         const fileInfo = {
             name: fileName,
-            bytes: bytes ,
-            extension :getFileExtension(fileName) ,
-            size: formatFileSize(bytes) ,
+            bytes: bytes,
+            extension: getFileExtension(fileName),
+            size: formatFileSize(bytes),
         };
         let currentLevel = folderTree;
         for (const folder of pathList) {
@@ -143,7 +139,7 @@ export const readFromArrayBuffer = async (arryBuf) => {
             refinedData,
             announce,
             length,
-            size : formatFileSize(length),
+            size: formatFileSize(length),
             folderTree,
         };
     } catch (error) {

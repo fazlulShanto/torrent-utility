@@ -78,7 +78,7 @@ function TorretnFileTree({ data }) {
         return null;
     }
 
-    const { folderTree, name, refinedData, length } = data;
+    const { folderTree, name, length } = data;
     /*[
         "files",
         "name",

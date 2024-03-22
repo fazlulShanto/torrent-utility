@@ -4,15 +4,20 @@ import RandomBadge from "./RandomBadge";
 
 function TorrentInfoWidgets({ data }) {
     // console.log(data);
-    const { announce, created, createdBy, name, status, size, files } = data;
+    const { announce, created, createdBy, refinedData, status, size, files } =
+        data;
+
+    const sortedRefinedData = Object.keys(refinedData.types)
+        .map((key) => ({ text: key, count: refinedData.types[key] }))
+        .sort((a, b) => b.count - a.count);
     return (
-        <div className="pt-8 px-2 flex gap-8 flex-col">
+        <div className="pt-8 px-2 flex gap-4 flex-col">
             {/* <StatWidget datavalue={name} datatitle={"Name:"} color={'success'} /> */}
 
             <StatWidget datavalue={size} datatitle={"Size on Disk:"} />
 
             <StatWidget
-                datavalue={files.length}
+                datavalue={refinedData.total}
                 datatitle={"Total File:"}
                 color={"success"}
             />
@@ -40,13 +45,15 @@ function TorrentInfoWidgets({ data }) {
                 datatitle={"Created By:"}
                 color={"success"}
             />
-            <div className="badges files">
-                <RandomBadge text={"test : 04"} />
-                <RandomBadge text={"test : 04"} />
-                <RandomBadge text={"test : 04"} />
-                <RandomBadge text={"test : 04"} />
-                <RandomBadge text={"test : 04"} />
-                <RandomBadge text={"test : 04"} />
+            <div className="badges files overflow-y-auto flex flex-col gap-2">
+                {sortedRefinedData.map((keyData, index) => {
+                    return (
+                        <RandomBadge
+                            key={index}
+                            text={`.${keyData.text} : ${keyData.count} `}
+                        />
+                    );
+                })}
             </div>
         </div>
     );

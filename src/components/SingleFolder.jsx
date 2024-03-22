@@ -39,9 +39,9 @@ function SingleFolder({ name, data, level }) {
 
     return (
         <div onClick={handleClick}>
-            {folderList.map((folderName, folderId) => {
+            {folderList?.map((folderName, folderId) => {
                 // console.log("#".repeat(10), key, data[key]);
-                const videoCount = data[folderName]["files"].filter(
+                const videoCount = data[folderName]["files"]?.filter(
                     (f) => f?.extension === "mp4"
                 ).length;
                 const fileCount = data[folderName]["files"]?.length;

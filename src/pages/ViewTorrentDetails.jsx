@@ -31,6 +31,7 @@ function ViewTorrentDetails() {
              * private
              */
             const res = await readFromArrayBuffer(reader.result);
+            console.log("file data", res);
             setFileDate(res);
             setShowDetails(true);
         });
@@ -49,7 +50,7 @@ function ViewTorrentDetails() {
                 />
             </div>
             <div className="flex flex-grow gap-2 w-full overflow-y-auto">
-                <div className="w-fit overflow-y-auto border-r-2 border-gray-300">
+                <div className="w-[240px] overflow-y-auto border-r-2 border-gray-300">
                     {showDetails && <TorrentInfoWidgets data={fileData} />}
                 </div>
 
