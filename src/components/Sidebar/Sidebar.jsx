@@ -39,6 +39,7 @@ const sideBarOptions = [
         id: "live_details",
         route: "live-details",
     },
+
     { text: "Others", icon: <Command />, id: "others", route: "others" },
 ];
 

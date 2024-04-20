@@ -12,7 +12,7 @@ function Layout() {
                 <div className="h-16 flex-shrink-0">
                     <Header />
                 </div>
-                <div className="flex-shrink overflow-hidden">
+                <div className="flex-shrink h-full overflow-hidden">
                     <Outlet />
                 </div>
             </div>
