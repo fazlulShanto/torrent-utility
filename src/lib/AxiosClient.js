@@ -1,10 +1,11 @@
 import axios from "axios";
 import { AppEnv } from "../configs/apis";
-export const getBaseUrl = () => {
+const getBaseUrl = () => {
     const remoteBaseUrl = import.meta.env.VITE_API_URL;
 
     const localBaseUrl = "http://localhost:4005";
     const currentEnv = AppEnv;
+
     switch (currentEnv) {
         case "production":
             return remoteBaseUrl;
@@ -14,7 +15,7 @@ export const getBaseUrl = () => {
 };
 
 const AxiosClient = axios.create({
-    baseURL: "/api",
+    baseURL: getBaseUrl(),
     timeout: 10 * 1000,
     headers: {
         "Content-Type": "application/json",
